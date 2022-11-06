@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/rocks/rock-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Rock List</h1>
+  <img src="{% static 'images/granite.png' %}" width="50px" alt="A granite rock" />
+  <img src="{% static 'images/basalt.png' %}" width="50px" alt="A basalt rock" />
+  <img src="{% static 'images/obsidian.png' %}" width="50px" alt="An obsidian rock" />
+</section>
+
+<section class="card-container">
+  {% for rock in rocks %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          {% comment %} <img 
+            src="{% static 'images/sk8r-boi-cat.svg' %}" 
+            alt="A skater boy cat"
+          > {% endcomment %}
+        </div>
+        <h2 class="card-title">{{ rock.name }}</h2>
+          <p>{{ rock.type }}</p>
+          <p>{{ rock.color }}</p>
+          <p>{{ rock.hardness }}</p>
+          <p>{{ rock.luster }}</p>
+          <p>{{ rock.crystalForms }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
