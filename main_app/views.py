@@ -1,29 +1,27 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Rock
 
 # Create your views here.
 
 # Define the home view
 def home(request):
-  return HttpResponse('<h1>Hello ᓚᘏᗢ</h1>')
+  return render(request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')
 
 class Rock: 
-  def __init__(self, name, type, color, hardness, luster, crystalForms):
+  def __init__(self, name, type, color, hardness):
     self.name = name
     self.type = type
     self.color = color
     self.hardness = hardness
-    self.luster = luster
-    self.crystalForms = crystalForms
 
 
 rocks = [
-  Rock('Granite', 'Igneous', 'grey', 'hardAF', 'vitreous', 'mica & quartz'),
-  Rock('Basalt', 'Igneous', 'dark-grey', 'mid', 'glassy', 'olivine, pyroxene & plagiocase'),
-  Rock('Obsidian', 'Igneous', 'black', 'mid', 'glassy lustre', 'silica')
+  Rock('Granite', 'Igneous', 'grey', 'hardAF',),
+  Rock('Basalt', 'Igneous', 'dark-grey', 'mid'),
+  Rock('Obsidian', 'Igneous', 'black', 'mid')
 ]
 
 def rocks_index(request):

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="https://use.typekit.net/zyt1lha.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<section>
+  <div id="titleDiv">
+    <h1>Rock Collector</h1>
+  </div>
+  <lottie-player
+  id="firstLottie"
+  src="https://assets3.lottiefiles.com/packages/lf20_N8vR3LvkCB.json"
+      style="width:600px; height: 600px;"
+      autoplay
+      loop
+      >
+    </lottie-player>
+</section>
+
+{% endblock %}
