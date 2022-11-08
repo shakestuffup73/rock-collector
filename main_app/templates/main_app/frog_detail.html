@@ -15,7 +15,7 @@
   <div class="card-bg" style="background-color: {{ frog.size }}"></div>
   <div class="card-content">
     <h2>{{ frog.name }}</h2>
-    <p>A {{ frog.species }}</p>
+    <p>A {{frog.size}} {{ frog.species }}</p>
   </div>
 </div>
 <a href="{% url 'frogs_update' frog.id %}" class="btn warn">Edit</a>
