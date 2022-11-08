@@ -15,13 +15,15 @@
 }
 
 .card-bg{
-  opacity: .4;
+  opacity: .6;
   position: absolute;
   display: inline-flex;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-image: url('../../images/blueforest.jpg');
+  background-size: cover;
 }
 
 .card-content {
