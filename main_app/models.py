@@ -26,11 +26,31 @@ SIZE = (
 )
 
 # Create your models here.
+class Frog(models.Model):
+  name = models.CharField(
+    max_length=50,
+    default='Chonk'
+  )
+  size = models.CharField(
+    max_length=10,
+    default=SIZE[0][0]
+  )
+  species = models.CharField(
+    max_length=50,
+    default=SPECIES[0][1]
+  )
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('frogs_detail', kwargs={'pk': self.id})
+
 class Rock(models.Model):
   name = models.CharField(max_length=100)
   type = models.CharField(max_length=100)
   color = models.CharField(max_length=100)
   hardness = models.CharField(max_length=100)
+  frogs = models.ManyToManyField(Frog)
 
   def fed_for_today(self):
     return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
@@ -57,21 +77,3 @@ class Feeding(models.Model):
   class Meta:
     ordering = ['-date']
 
-class Frog(models.Model):
-  name = models.CharField(
-    max_length=50,
-    default='Chonk'
-  )
-  size = models.CharField(
-    max_length=10,
-    default=SIZE[0][0]
-  )
-  species = models.CharField(
-    max_length=50,
-    default=SPECIES[0][1]
-  )
-  def __str__(self):
-    return self.name
-
-  def get_absolute_url(self):
-    return reverse('frogs_detail', kwargs={'pk': self.id})
