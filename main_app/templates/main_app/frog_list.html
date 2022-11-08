@@ -21,11 +21,13 @@
 
 <section class="card-container">
   {% for frog in frog_list %}
-  <div class="card" style="border-color: {{ frog.name }}">
-    <div class="card-bg" style="background-color: {{ frog.size }}"></div>
-    <a href="{% url 'frog_detail' frog.id %}">
-      {% comment %} <div class="card-content">
-      </div> {% endcomment %}
+  <div class="card">
+    <div class="card-bg"></div>
+    <a href="{% url 'frogs_detail' frog.id %}">
+      <div class="card-content">
+        <h2>{{ frog.name }} </h2>
+        <p>A {{frog.size }} {{frog.species}}</p>
+      </div>
     </a>
   </div>
   {% endfor %}

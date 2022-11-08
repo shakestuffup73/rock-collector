@@ -60,3 +60,11 @@ class FrogList(ListView):
 
 class FrogDetail(DetailView):
   model = Frog
+
+class FrogUpdate(UpdateView):
+  model = Frog
+  fields = ['name', 'size']
+
+class FrogDelete(DeleteView):
+  model = Frog
+  success_url = '/frogs/'

@@ -12,5 +12,7 @@ urlpatterns = [
   path('rocks/<int:rock_id>/add_feeding', views.add_feeding, name='add_feeding'),
   path('frogs/create/', views.FrogCreate.as_view(), name='frogs_create'),
   path('frogs/<int:pk>/', views.FrogDetail.as_view(), name='frogs_detail'),
-  path('frogs/', views.FrogList.as_view(), name='frogs_index')
+  path('frogs/', views.FrogList.as_view(), name='frogs_index'),
+  path('frogs/<int:pk>/update/', views.FrogUpdate.as_view(), name='frogs_update'),
+  path('frogs/<int:pk>/delete/', views.FrogDelete.as_view(), name='frogs_delete'),
 ]

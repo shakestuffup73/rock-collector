@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/frogs/frog-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card" style="border-color: {{ frog.name }}">
+  <div class="card-bg" style="background-color: {{ frog.size }}"></div>
+  <div class="card-content">
+    <h2>{{ frog.name }}</h2>
+    <p>A {{ frog.species }}</p>
+  </div>
+</div>
+<a href="{% url 'frogs_update' frog.id %}" class="btn warn">Edit</a>
+<a href="{% url 'frogs_delete' frog.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

@@ -15,6 +15,16 @@ SPECIES = (
   ('T', 'TreeFrog'),
   ('K', 'Kermit'),
 )
+
+SIZE = (
+  ('V', 'very smol'),
+  ('S', 'smol'),
+  ('M', 'midsize'),
+  ('L', 'large'),
+  ('T', 'thicc'),
+  ('B', 'bigboi')
+)
+
 # Create your models here.
 class Rock(models.Model):
   name = models.CharField(max_length=100)
@@ -52,7 +62,10 @@ class Frog(models.Model):
     max_length=50,
     default='Chonk'
   )
-  size = models.IntegerField()
+  size = models.CharField(
+    max_length=10,
+    default=SIZE[0][0]
+  )
   species = models.CharField(
     max_length=50,
     default=SPECIES[0][1]
@@ -61,4 +74,4 @@ class Frog(models.Model):
     return self.name
 
   def get_absolute_url(self):
-    return reverse('frog_detail', kwargs={'pk': self.id})
+    return reverse('frogs_detail', kwargs={'pk': self.id})
