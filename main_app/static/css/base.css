@@ -27,11 +27,11 @@ body {
   font-style: normal;
   min-height: 100vh;
   background-color: #1D1D35;
-  --nav-bg: #619C86;
-  --nav-bg-ff: #619C86;
-  --borders: 2px solid #619C86;
-  --text-color: rgb(17, 20, 17);
-  --link-hover-color: #619C86;
+  --nav-bg: darkcyan;
+  --nav-bg-ff: darkcyan;
+  --borders: 3px solid whitesmoke;
+  --text-color: whitesmoke;
+  --link-hover-color: purple;
   --button-bg: rgb(245, 245, 245);
   --button-bg-hover: rgb(226, 226, 226);
   --submit: rgb(26, 128, 0);
@@ -264,7 +264,7 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: #619C86;
+      background: darkcyan;
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }

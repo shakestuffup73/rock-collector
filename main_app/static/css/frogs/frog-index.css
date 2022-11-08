@@ -14,14 +14,12 @@
 }
 
 .card-bg{
-  opacity: .6;
   position: absolute;
-  display: inline-flex;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../images/blueforest.jpg');
+  background-image: url('../../images/lilypads.jpg');
   background-size: cover;
   border: 4px solid darkcyan;
 }
@@ -31,9 +29,10 @@
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
+  color: whitesmoke;
 }
 
 .card > a {
@@ -55,12 +54,4 @@
 .card p {
   margin: 0;
   font-size: var(--font-reg);
-}
-
-.page-header > img {
-  margin-left: 10px;
-}
-
-.page-header > img:first-of-type {
-  margin-left: 15px;
 }
