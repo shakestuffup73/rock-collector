@@ -27,8 +27,8 @@ body {
   font-style: normal;
   min-height: 100vh;
   background-color: #1D1D35;
-  --nav-bg: #F0FCF7;
-  --nav-bg-ff: #F0FCF7;
+  --nav-bg: #619C86;
+  --nav-bg-ff: #619C86;
   --borders: 2px solid #619C86;
   --text-color: rgb(17, 20, 17);
   --link-hover-color: #619C86;
@@ -264,7 +264,7 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: #F0FCF7;
+      background: #619C86;
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }

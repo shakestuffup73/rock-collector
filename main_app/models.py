@@ -8,6 +8,12 @@ MEALS = (
   ('L', 'Lichen'),
   ('P', 'Prickly Pear')
 )
+
+BRANDS = (
+  ('N', 'NatGeo'),
+  ('L', 'Leegol Electric'),
+  ('D', 'Dan & Darci')
+)
 # Create your models here.
 class Rock(models.Model):
   name = models.CharField(max_length=100)
@@ -42,7 +48,12 @@ class Feeding(models.Model):
 
 class Tumbled(models.Model):
   hours = models.IntegerField()
-  tumbler_brand = models.CharField(max_length=50)
-  grit_type = models.CharField(max_length=50)
-  grit_brand = models.CharField(max_length=50)
+  brand = models.CharField(
+    max_length=50,
+    default=BRANDS[0][1]
+  )
+  def __str__(self):
+    return self.name
 
+  def get_absolute_url(self):
+    return reverse('tumbled_detail', kwargs={'pk': self.id})
