@@ -24,6 +24,42 @@
     <h2>{{ rock.color }}</h2>
     <h2>{{ rock.hardness }}</h2>
   </div>
+    <div class="rock-actions">
+      <a href="{% url 'rocks_update' rock.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'rocks_delete' rock.id %}" class="btn danger">Delete</a>
+    </div>
+    <div class="feedings-meal-container">
+      <section class="feedings">
+        <div class="subsection-title">
+          <h2>Nom Nom Nom</h2>
+          {% comment %} <img 
+            src="{% static 'images/cat-cone.svg' %}" 
+            alt="An ice cream cone cat"
+          />
+          <img 
+            src="{% static 'images/cat-onigiri.svg' %}"
+            alt="A cat as onigiri"
+          />
+          <img 
+            src="{% static 'images/kitty-kabob.svg' %}" 
+            alt="A kabob of kittens"
+          /> {% endcomment %}
+        </div>
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Meal</th></tr>
+          </thead>
+          <tbody>
+            {% for feeding in rock.feeding_set.all %}
+              <tr>
+                <td>{{feeding.date}}</td>
+                <td>{{feeding.get_meal_display}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
 </section>
 
 {% endblock %}

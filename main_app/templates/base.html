@@ -33,8 +33,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/rocks">All Rocks</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="{% url 'rocks_index' %}">All Rocks</a></li>
+        <li><a href="{% url 'rocks_create' %}">Add a Rock</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </nav>
   </header>

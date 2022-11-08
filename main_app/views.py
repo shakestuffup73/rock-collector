@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Rock
+from .forms import FeedingForm
 
 # Create your views here.
 
@@ -17,6 +19,20 @@ def rocks_index(request):
 
 def rocks_detail(request, rock_id):
   rock = Rock.objects.get(id=rock_id)
-  return render(request, 'rocks/detail.html', {'rock': rock})
+  feeding_form = FeedingForm()
+  return render(request, 'rocks/detail.html', {'rock': rock, 'feeding_form': feeding_form})
 
 
+class RockCreate(CreateView):
+  model = Rock
+  fields = '__all__'
+  success_url = '/rocks/'
+
+
+class RockUpdate(UpdateView):
+  model = Rock
+  fields = ['color', 'hardness']
+
+class RockDelete(DeleteView):
+  model = Rock
+  success_url = '/rocks/'
