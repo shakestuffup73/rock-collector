@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Rock
 from .forms import FeedingForm
@@ -22,6 +22,13 @@ def rocks_detail(request, rock_id):
   feeding_form = FeedingForm()
   return render(request, 'rocks/detail.html', {'rock': rock, 'feeding_form': feeding_form})
 
+def add_feeding(request, rock_id):
+  form = FeedingForm(request.POST)
+  if form.is_valid():
+    new_feeding = form.save(commit=False)
+    new_feeding.rock_id = rock_id
+    new_feeding.save()
+  return redirect('rocks_detail', rock_id=rock_id)
 
 class RockCreate(CreateView):
   model = Rock

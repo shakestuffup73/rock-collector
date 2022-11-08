@@ -8,5 +8,6 @@ urlpatterns = [
   path('rocks/<int:rock_id>/', views.rocks_detail, name='rocks_detail'),
   path('rocks/create/', views.RockCreate.as_view(), name='rocks_create'),
   path('rocks/<int:pk>/update/', views.RockUpdate.as_view(), name='rocks_update'),
-  path('rocks/<int:pk>/delete/', views.RockDelete.as_view(), name='rocks_delete')
+  path('rocks/<int:pk>/delete/', views.RockDelete.as_view(), name='rocks_delete'),
+  path('rocks/<int:rock_id>/add_feeding', views.add_feeding, name='add_feeding')
 ]
