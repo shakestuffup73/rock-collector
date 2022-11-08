@@ -2,7 +2,15 @@
   padding: 0 30px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
 }
 
 .card {
@@ -11,11 +19,6 @@
   border: var(--borders);
   box-shadow: var(--card-box-shadow);
   background-color: #619C86;
-}
-
-.card-content {
-  padding: 10px;
-  width: 100%;
 }
 
 .usr-img {

@@ -9,7 +9,6 @@
   width: 224px;
   height: 224px;
   margin: 10px;
-  border: solid 2px;
   box-shadow: var(--card-box-shadow);
   position: relative;
 }
@@ -24,6 +23,7 @@
   height: 100%;
   background-image: url('../../images/blueforest.jpg');
   background-size: cover;
+  border: 4px solid darkcyan;
 }
 
 .card-content {

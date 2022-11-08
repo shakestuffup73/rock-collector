@@ -13,13 +13,7 @@
 {% block content %}
 
 <section class="page-header">
-  <img src="{% static 'images/obsidian.png' %}" width="50px" alt="An obsidian rock" />
-  <img src="{% static 'images/granite.png' %}" width="50px" alt="A granite rock" />
-  <img src="{% static 'images/basalt.png' %}" width="50px" alt="A basalt rock" />
   <h1>Rocks List</h1>
-  <img src="{% static 'images/basalt.png' %}" width="50px" alt="A basalt rock" />
-  <img src="{% static 'images/granite.png' %}" width="50px" alt="A granite rock" />
-  <img src="{% static 'images/obsidian.png' %}" width="50px" alt="An obsidian rock" />
 </section>
 
 <section class="card-container">
@@ -36,6 +30,11 @@
               loop
             >
             </lottie-player>
+            <img 
+              src="{% static 'images/collectedrocks.png' %}" 
+              alt="A pile of collected rocks"
+              style="width:200px; height:200px"
+            >
           </div>
         <h2 class="card-title">{{ rock.name }}</h2>
         </div>
