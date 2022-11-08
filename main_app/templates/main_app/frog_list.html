@@ -5,14 +5,14 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/tumbled/tumbled-index.css' %}"
+  href="{% static 'css/frogs/frog-index.css' %}"
 />
 {% endblock %}
 
 {% block content %}
 
 <section class="page-header">
-  <h1>All Tumblings</h1>
+  <h1>All Frogs</h1>
   {% comment %} <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
   <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
   <img src="{% static 'images/post.svg' %}" alt="A scratching post" />
@@ -20,10 +20,10 @@
 </section>
 
 <section class="card-container">
-  {% for tumbled in tumbled_list %}
-  <div class="card" style="border-color: {{ tumbled.hours }}">
-    <div class="card-bg" style="background-color: {{ tumbled.brand }}"></div>
-    <a href="{% url 'tumbled_detail' tumbled.id %}">
+  {% for frog in frog_list %}
+  <div class="card" style="border-color: {{ frog.name }}">
+    <div class="card-bg" style="background-color: {{ frog.size }}"></div>
+    <a href="{% url 'frog_detail' frog.id %}">
       {% comment %} <div class="card-content">
       </div> {% endcomment %}
     </a>

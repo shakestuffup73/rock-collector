@@ -9,10 +9,11 @@ MEALS = (
   ('P', 'Prickly Pear')
 )
 
-BRANDS = (
-  ('N', 'NatGeo'),
-  ('L', 'Leegol Electric'),
-  ('D', 'Dan & Darci')
+SPECIES = (
+  ('B', 'BullFrog'),
+  ('P', 'PennyFrog'),
+  ('T', 'TreeFrog'),
+  ('K', 'Kermit'),
 )
 # Create your models here.
 class Rock(models.Model):
@@ -46,14 +47,18 @@ class Feeding(models.Model):
   class Meta:
     ordering = ['-date']
 
-class Tumbled(models.Model):
-  hours = models.IntegerField()
-  brand = models.CharField(
+class Frog(models.Model):
+  name = models.CharField(
     max_length=50,
-    default=BRANDS[0][1]
+    default='Chonk'
+  )
+  size = models.IntegerField()
+  species = models.CharField(
+    max_length=50,
+    default=SPECIES[0][1]
   )
   def __str__(self):
     return self.name
 
   def get_absolute_url(self):
-    return reverse('tumbled_detail', kwargs={'pk': self.id})
+    return reverse('frog_detail', kwargs={'pk': self.id})
