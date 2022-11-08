@@ -3,10 +3,20 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/rocks/rock-detail.css' %}"
 />
+<script defer src="{% static 'js/rock-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -45,6 +55,16 @@
             alt="A kabob of kittens"
           /> {% endcomment %}
         </div>
+      <h3>Add a Feeding</h3>
+        <form
+          method="post" 
+          class="subsection-content"
+        >
+          {% csrf_token %}
+          {{ feeding_form.as_p }}
+          <button type="submit" class="btn submit">Add Feeding</button>
+        </form>
+      <h3>Past Feedings</h3>
         <table>
           <thead>
             <tr><th>Date</th><th>Meal</th></tr>
@@ -60,6 +80,7 @@
         </table>
       </section>
     </div>
+  </div>
 </section>
 
 {% endblock %}
