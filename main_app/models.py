@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 MEALS = (
   ('MR', 'Mushies'),
@@ -14,13 +15,15 @@ class Rock(models.Model):
   color = models.CharField(max_length=100)
   hardness = models.CharField(max_length=100)
 
+  def fed_for_today(self):
+    return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
+
   def __str__(self):
     return self.name
   
   def get_absolute_url(self):
       return reverse("rocks_detail", kwargs={"rock_id": self.id})
   
-
 class Feeding(models.Model):
   date = models.DateField('Feeding Date')
   meal = models.CharField(
@@ -34,5 +37,12 @@ class Feeding(models.Model):
   def __str__(self):
     return f"{self.get_meal_display()} on {self.date}"
     
-    class Meta:
-      ordering = ['-date']
+  class Meta:
+    ordering = ['-date']
+
+class Tumbled(models.Model):
+  hours = models.IntegerField()
+  tumbler_brand = models.CharField(max_length=50)
+  grit_type = models.CharField(max_length=50)
+  grit_brand = models.CharField(max_length=50)
+

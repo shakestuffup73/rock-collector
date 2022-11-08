@@ -9,5 +9,8 @@ urlpatterns = [
   path('rocks/create/', views.RockCreate.as_view(), name='rocks_create'),
   path('rocks/<int:pk>/update/', views.RockUpdate.as_view(), name='rocks_update'),
   path('rocks/<int:pk>/delete/', views.RockDelete.as_view(), name='rocks_delete'),
-  path('rocks/<int:rock_id>/add_feeding', views.add_feeding, name='add_feeding')
+  path('rocks/<int:rock_id>/add_feeding', views.add_feeding, name='add_feeding'),
+  path('tumbled/create/', views.TumbledCreate.as_view(), name='tumbled_create'),
+  path('tumbled/<int:pk>/', views.TumbledDetail.as_view(), name='tumbled_detail'),
+  path('tumbled/', views.TumbledList.as_view(), name='tumbled_index')
 ]

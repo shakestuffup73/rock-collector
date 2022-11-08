@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Rock
+from .models import Rock, Tumbled
 from .forms import FeedingForm
 
 # Create your views here.
@@ -43,3 +45,19 @@ class RockUpdate(UpdateView):
 class RockDelete(DeleteView):
   model = Rock
   success_url = '/rocks/'
+
+class TumbledCreate(CreateView):
+  model = Tumbled
+  fields = '__all__'
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('tumbled_detail', kwargs={'pk': self.id})
+
+class TumbledList(ListView):
+  model = Tumbled
+
+class TumbledDetail(DetailView):
+  model = Tumbled
