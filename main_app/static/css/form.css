@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  color: whitesmoke;
+}
+
+h1 {
+  color: whitesmoke;
 }
 
 table {
