@@ -10,12 +10,21 @@
 {% endblock %}
 
 {% block content %}
-  
-<div class="card" style="border-color: {{ frog.name }}">
-  <div class="card-bg" style="background-color: {{ frog.size }}"></div>
-  <div class="card-content">
-    <h2>{{ frog.name }}</h2>
-    <p>A {{frog.size}} {{ frog.species }}</p>
+
+<div class="card">
+  <div class="card-bg">
+    <div class="card-content">
+      <h2>{{ frog.name }}</h2>
+      <p>A {{frog.size }} {{frog.species}}</p>
+      <lottie-player
+        id="firstLottie"
+        src="https://assets6.lottiefiles.com/packages/lf20_ypoyndji.json"
+        style="width:270px; height: 270px; margin-left: 10px; margin-top: -70px;"
+        autoplay
+        loop
+      >
+      </lottie-player>
+    </div>
   </div>
 </div>
 <a href="{% url 'frogs_update' frog.id %}" class="btn warn">Edit</a>

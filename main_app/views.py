@@ -21,8 +21,11 @@ def rocks_index(request):
 
 def rocks_detail(request, rock_id):
   rock = Rock.objects.get(id=rock_id)
+  frogs_rock_doesnt_have = Frog.objects.exclude(id__in = rock.frogs.all().values_list('id'))
   feeding_form = FeedingForm()
-  return render(request, 'rocks/detail.html', {'rock': rock, 'feeding_form': feeding_form})
+  return render(request, 'rocks/detail.html', {
+    'rock': rock, 'feeding_form': feeding_form, 'frogs': frogs_rock_doesnt_have
+  })
 
 def add_feeding(request, rock_id):
   form = FeedingForm(request.POST)
@@ -69,3 +72,7 @@ class FrogUpdate(UpdateView):
 class FrogDelete(DeleteView):
   model = Frog
   success_url = '/frogs/'
+
+def assoc_frog(request, rock_id, frog_id):
+  Rock.objects.get(id=rock_id).frogs.add(frog_id)
+  return redirect('rocks_detail', rock_id=rock_id)

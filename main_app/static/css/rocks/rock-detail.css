@@ -1,3 +1,8 @@
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
 .page-div {
   display: flex;
   flex-direction: column;
@@ -54,6 +59,15 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.frog-container > a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.frog-container > a:hover{
+  color: purple;
 }
 
 .unfed,
