@@ -13,6 +13,12 @@
   width: 100%;
 }
 
+.card-content > h2, p {
+  text-shadow: 2px 2px purple;
+  background-color: #1D1D35;
+  padding: 4px;
+}
+
 .card {
   width: 275px;
   margin: 10px;
