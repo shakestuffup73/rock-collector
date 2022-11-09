@@ -11,7 +11,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 90%;
+  min-width: 280px;
+  border: var(--borders);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-box-shadow);
+  background-image: url('../../images/blueforest.jpg');
+  color: whitesmoke;
+  margin-top: 20px;
+}
+
+.title-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  width: 100%;
   min-width: 280px;
   border: var(--borders);
   border-radius: var(--card-border-radius);
@@ -28,10 +42,16 @@
   align-items: center;
 }
 
-.frog-section, .meal-section {
+.meals-and-frogs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .unfed,
@@ -55,7 +75,7 @@
 .rock-details {
   border: 2px solid whitesmoke;
   background-color: #1D1D35;
-  width: 100%;
+  width: 95%;
   padding: 20px;
 }
 
