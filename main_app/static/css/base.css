@@ -162,6 +162,18 @@ nav li {
   font-size: var(--font-reg);
 }
 
+.about-div {
+  color: whitesmoke;
+  text-shadow: 2px 2px purple;
+  padding: 20px;
+  background-image: url('../images/blueforest2.jpg');
+  background-size: cover;
+}
+
+.about-div > h2 {
+  background-color: #1D1D35;
+}
+
 @media only screen and (min-width: 768px) {
   header {
     position: sticky;
