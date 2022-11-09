@@ -37,6 +37,12 @@ main {
   color: whitesmoke;
 }
 
+.card-content > h2, p {
+  text-shadow: 2px 2px purple;
+  background-color: #1D1D35;
+  padding: 4px;
+}
+
 .btn {
   margin-bottom: 15px;
 }

@@ -130,7 +130,7 @@
               </lottie-player>
               </div>
               <a href="{% url 'frogs_detail' frog.id %}">
-                <p>A {{ frog.size }} {{ frog.species }}</p>
+                <p>{{ frog.name }}</p>
               </a>
             </div>
           {% endfor %}
@@ -148,7 +148,6 @@
               <div class="card-bg">
                 <div class="card-content">
                   <h2>{{ frog.name }}</h2>
-                  <p>A {{frog.size }} {{frog.species}}</p>
                   <lottie-player
                     id="firstLottie"
                     src="https://assets6.lottiefiles.com/packages/lf20_ypoyndji.json"
