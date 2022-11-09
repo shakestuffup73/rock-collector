@@ -60,6 +60,12 @@ a {
   align-items: center;
   width: 100%;
 }
+.frog-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-evenly;
+  align-items: center;
+}
 
 .frog-container > a {
   color: whitesmoke;
