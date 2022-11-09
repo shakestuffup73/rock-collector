@@ -53,7 +53,8 @@ class FrogCreate(CreateView):
     return self.name
 
   def get_absolute_url(self):
-    return reverse('frog_detail', kwargs={'pk': self.id})
+    return reverse('frogs_detail', kwargs={'pk': self.id})
+
 
 class FrogList(ListView):
   model = Frog

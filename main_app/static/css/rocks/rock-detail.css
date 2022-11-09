@@ -24,15 +24,16 @@
 .title-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   justify-content: center;
-  width: 100%;
   min-width: 280px;
   border: var(--borders);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-box-shadow);
   background-image: url('../../images/blueforest.jpg');
   color: whitesmoke;
-  margin-top: 20px;
+  margin-top: 40px;
+  padding: 20px;
 }
 
 .feedings-moss-container {
@@ -49,9 +50,10 @@
 
 .title-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .unfed,
@@ -75,8 +77,9 @@
 .rock-details {
   border: 2px solid whitesmoke;
   background-color: #1D1D35;
-  width: 95%;
+  width: 100%;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .rock-details h1 {

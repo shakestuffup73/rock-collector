@@ -22,18 +22,17 @@
       <div class="card-content">
         <h2>{{ frog.name }}</h2>
         <p>A {{frog.size }} {{frog.species}}</p>
-        <a href="{% url 'frogs_detail' frog.id %}">
-        </a>
       </div>
-        <lottie-player
-        id="firstLottie"
-        src="https://assets6.lottiefiles.com/packages/lf20_ypoyndji.json"
-        style="width:270px; height: 270px; margin-left: 30px; margin-top: -200px;"
-        autoplay
-        loop
-        >
-        </lottie-player>
-    </div>
+      <lottie-player
+      id="firstLottie"
+      src="https://assets6.lottiefiles.com/packages/lf20_ypoyndji.json"
+      style="width:270px; height: 270px; margin-left: 30px; margin-top: -200px;"
+      autoplay
+      loop
+      >
+    </lottie-player>
+  </div>
+    <a href="{% url 'frogs_detail' frog.id %}"></a>
   </div>
   {% endfor %}
 </section>
