@@ -21,56 +21,75 @@
 
 {% block content %}
 
-<section class="rock-container">
-  {% comment %} <div class="cat-img">
+<div class="page-div">
+  <div class="feedings-meal-container">
+    <lottie-player
+      id="firstLottie"
+      src="https://assets6.lottiefiles.com/private_files/lf30_lfb13isu.json"
+      style="width:50px; height: 50px;"
+      autoplay
+      loop
+      >
+    </lottie-player>
     <img 
-      src="{% static 'images/sk8r-boi-cat.svg' %}" 
-      alt="A skater boy cat"
-    >
-  </div> {% endcomment %}
-  <div class="rock-details">
-    <h1>{{ rock.name }}</h1>
-    <h2>{{ rock.type }}</h2>
-    <h2>{{ rock.color }}</h2>
-    <h2>{{ rock.hardness }}</h2>
-  </div>
+      src="{% static 'images/collectedrocks.png' %}" 
+      alt="A pile of collected rocks"
+      style="width:100px; height:100px"
+      id="rockPile"
+    />
+
+    <div class="rock-details">
+      <h1>{{ rock.name }}</h1>
+      <h2>{{ rock.type }}</h2>
+      <h2>{{ rock.color }}</h2>
+      <h2>{{ rock.hardness }}</h2>
+    </div>
+
     <div class="rock-actions">
       <a href="{% url 'rocks_update' rock.id %}" class="btn warn">Edit</a>
       <a href="{% url 'rocks_delete' rock.id %}" class="btn danger">Delete</a>
     </div>
-    <div class="feedings-meal-container">
-      <section class="feedings">
-        <div class="subsection-title">
-          <h2>Nom Nom Nom</h2>
-          {% comment %} <img 
-            src="{% static 'images/cat-cone.svg' %}" 
-            alt="An ice cream cone cat"
-          />
-          <img 
-            src="{% static 'images/cat-onigiri.svg' %}"
-            alt="A cat as onigiri"
-          />
-          <img 
-            src="{% static 'images/kitty-kabob.svg' %}" 
-            alt="A kabob of kittens"
-          /> {% endcomment %}
-        </div>
-      <h3>Add a Feeding</h3>
-        <form
-          action="{% url 'add_feeding' rock.id %}"
-          method="post" 
-          class="subsection-content"
-        >
-        {% if cat.fed_for_today %}
-          <p class="fed">{{cat.name}} has been fed all their meals for today!</p>
-        {% else %}
-          <p class="unfed">{{cat.name}} might be hungry!</p>
-        {% endif %}
-          {% csrf_token %}
-          {{ feeding_form.as_p }}
-          <button type="submit" class="btn submit">Add Feeding</button>
-        </form>
-      <h3>Past Feedings</h3>
+  </div>
+
+  <h2>Nom Nom Nom</h2>
+  
+  <div class="feedings-meal-container">
+    <div class="feedings-moss-container">
+      <img 
+        src="{% static 'images/moss.png' %}" 
+        alt="A rock with moss"
+        style="width:100px; height:50px"
+      />
+      <img 
+        src="{% static 'images/mushies.png' %}"
+        alt="A rock with moss and mushies"
+        style="width:100px; height:50px;"
+      />
+      <img 
+        src="{% static 'images/lichen.png' %}" 
+        alt="A piece of lichen"
+        style="width:100px; height:50px;"
+      />
+    </div>
+    <h2>Add a Feeding</h2>
+      <form
+        action="{% url 'add_feeding' rock.id %}"
+        method="post" 
+        class="subsection-content"
+      >
+      {% if rock.fed_for_today %}
+        <p class="fed">{{rock.name}} has been fed all their meals for today!</p>
+      {% else %}
+        <p class="unfed">{{rock.name}} might be hungry!</p>
+      {% endif %}
+        {% csrf_token %}
+        {{ feeding_form.as_p }}
+        <button type="submit" class="btn submit">Add Feeding</button>
+      </form>
+  </div>
+
+  <div class="feedings-meal-container">
+    <h2>Past Feedings</h2>
       {% if rock.feeding_set.all.count %}
       <table>
         <thead>
@@ -85,14 +104,52 @@
           {% endfor %}
         </tbody>
       </table>
-    {% else %}
-			<div class="subsection-content">
-        <p>{{rock.name}} has never been fed 😔</p>
-      </div>
-    {% endif %}
-      </section>
-    </div>
   </div>
-</section>
 
+    {% else %}
+  <div class="feedings-meal-container">
+    <p>{{rock.name}} has never been fed 😔</p>
+  </div>
+    {% endif %}
+  
+  <div class="feedings-meal-container">
+    <h2>Frogs</h2>
+    {% if rock.frogs.count %}
+    <h2>{{ rock.name }}'s Frogs</h2>
+        {% for frog in rock.frogs.all %}
+          <div class="frog-container">
+            <a href="{% url 'frogs_detail' frog.id %}">
+              <p>A {{ frog.size }} {{ frog.species }}</p>
+            </a>
+          </div>
+        {% endfor %}
+        {% else %}
+      <p class="no-frogs">{{ rock.name }} doesn't have any frogs</p>
+      {% endif %}
+  </div>
+
+  <div class="feedings-meal-container">
+    <h2>Available Frogs</h2>
+    {% if frogs.count %}
+      {% for frog in frogs.all %}
+        <div class="frog-container">
+          <div 
+            class="color-block"
+          ></div>
+          <a href="{% url 'frogs_detail' frog.id %}">
+            <p>A {{ frog.size }} {{ frog.species }}</p>
+          </a>
+          <form action="{% url 'assoc_frog' rock.id frog.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn submit">Give Frog</button>
+          </form>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="all-frogs">
+        {{ rock.name }} already has all the available frogs 🥳
+      </p>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
