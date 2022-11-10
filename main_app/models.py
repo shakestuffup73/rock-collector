@@ -49,7 +49,6 @@ class Rock(models.Model):
   name = models.CharField(max_length=100)
   type = models.CharField(max_length=100)
   color = models.CharField(max_length=100)
-  hardness = models.CharField(max_length=100)
   frogs = models.ManyToManyField(Frog)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 

@@ -34,11 +34,17 @@
         >
         </lottie-player>
         </li>
+        {% if user.is_authenticated %}
         <li><a href="{% url 'rocks_index' %}">All Rocks</a></li>
         <li><a href="{% url 'frogs_index' %}">All Frogs</a></li>
         <li><a href="{% url 'rocks_create' %}">Add a Rock</a></li>
         <li><a href="{% url 'frogs_create' %}">Add a Frog</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'home' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
