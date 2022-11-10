@@ -4,6 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Rock, Frog
 from .forms import FeedingForm
@@ -17,11 +19,12 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def rocks_index(request):
-  rocks = Rock.objects.all()
-  return render(request, 'rocks/index.html',
-  {'rocks' : rocks })
+  rocks = Rock.objects.filter(user=request.user)
+  return render(request, 'rocks/index.html', {'rocks' : rocks })
 
+@login_required
 def rocks_detail(request, rock_id):
   rock = Rock.objects.get(id=rock_id)
   frogs_rock_doesnt_have = Frog.objects.exclude(id__in = rock.frogs.all().values_list('id'))
@@ -30,6 +33,7 @@ def rocks_detail(request, rock_id):
     'rock': rock, 'feeding_form': feeding_form, 'frogs': frogs_rock_doesnt_have
   })
 
+@login_required
 def add_feeding(request, rock_id):
   form = FeedingForm(request.POST)
   if form.is_valid():
@@ -38,7 +42,7 @@ def add_feeding(request, rock_id):
     new_feeding.save()
   return redirect('rocks_detail', rock_id=rock_id)
 
-class RockCreate(CreateView):
+class RockCreate(LoginRequiredMixin, CreateView):
   model = Rock
   fields = '__all__'
   success_url = '/rocks/'
@@ -48,15 +52,15 @@ class RockCreate(CreateView):
 
     return super().form_valid(form)
 
-class RockUpdate(UpdateView):
+class RockUpdate(LoginRequiredMixin, UpdateView):
   model = Rock
   fields = ['color', 'hardness']
 
-class RockDelete(DeleteView):
+class RockDelete(LoginRequiredMixin, DeleteView):
   model = Rock
   success_url = '/rocks/'
 
-class FrogCreate(CreateView):
+class FrogCreate(LoginRequiredMixin, CreateView):
   model = Frog
   fields = '__all__'
 
@@ -67,20 +71,21 @@ class FrogCreate(CreateView):
     return reverse('frogs_detail', kwargs={'pk': self.id})
 
 
-class FrogList(ListView):
+class FrogList(LoginRequiredMixin, ListView):
   model = Frog
 
-class FrogDetail(DetailView):
+class FrogDetail(LoginRequiredMixin, DetailView):
   model = Frog
 
-class FrogUpdate(UpdateView):
+class FrogUpdate(LoginRequiredMixin, UpdateView):
   model = Frog
   fields = ['name', 'size']
 
-class FrogDelete(DeleteView):
+class FrogDelete(LoginRequiredMixin, DeleteView):
   model = Frog
   success_url = '/frogs/'
 
+@login_required
 def assoc_frog(request, rock_id, frog_id):
   Rock.objects.get(id=rock_id).frogs.add(frog_id)
   return redirect('rocks_detail', rock_id=rock_id)
@@ -89,7 +94,7 @@ def signup(request):
   error_message = ''
   if request.method == 'POST':
     form = UserCreationForm(request.POST)
-    if form.is_valid()
+    if form.is_valid():
       user = form.save()
       login(request, user)
       return redirect('rocks_index')
