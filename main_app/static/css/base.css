@@ -171,7 +171,7 @@ nav li {
   padding: 20px;
   background-image: url('../images/blueforest2.jpg');
   background-size: cover;
-  max-width: 938px;
+  max-width: 828px;
   border: 4px solid darkcyan;
   margin-top: 20px;
 }
@@ -180,6 +180,7 @@ nav li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .about-div > h2 {
@@ -188,7 +189,7 @@ nav li {
 }
 
 .frog-div {
-  margin-left: 210px;
+  margin-left: 182px;
 }
 
 @media only screen and (min-width: 768px) {
