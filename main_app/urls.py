@@ -16,4 +16,7 @@ urlpatterns = [
   path('frogs/', views.FrogList.as_view(), name='frogs_index'),
   path('frogs/<int:pk>/update/', views.FrogUpdate.as_view(), name='frogs_update'),
   path('frogs/<int:pk>/delete/', views.FrogDelete.as_view(), name='frogs_delete'),
+  path('admin/', admin.site.urls),
+  path('', include('main_app.urls')),
+  path('accounts/', include('django.contrib.auth.urls')),
 ]
