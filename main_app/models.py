@@ -6,7 +6,6 @@ MEALS = (
   ('MR', 'Mushies'),
   ('MO', 'Moss'),
   ('L', 'Lichen'),
-  ('P', 'Prickly Pear')
 )
 
 SPECIES = (
