@@ -163,6 +163,9 @@ nav li {
 }
 
 .about-div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   color: whitesmoke;
   text-shadow: 2px 2px purple;
   padding: 20px;
@@ -172,6 +175,11 @@ nav li {
 
 .about-div > h2 {
   background-color: #1D1D35;
+  padding: 20px;
+}
+
+.frog-div {
+  margin-left: 210px;
 }
 
 @media only screen and (min-width: 768px) {
