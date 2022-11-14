@@ -1,3 +1,8 @@
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+
 """
 Django settings for rockcollector project.
 
@@ -21,12 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i2$&61vjkq#kc846v#!a0ps1%nu-$w4s)bvmk@8nn7e21q#b71'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG') == 'True'
 
 ALLOWED_HOSTS = []
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 # Application definition
@@ -130,3 +137,6 @@ LOGOUT_REDIRECT_URL = 'home'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import django_heroku
+django_heroku.settings(locals())
