@@ -35,7 +35,6 @@ ALLOWED_HOSTS = []
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-
 # Application definition
 
 INSTALLED_APPS = [
