@@ -13,7 +13,7 @@ LINK TO APP HERE:
 <br>
 <br>
 
-![App Screenshot](../rock-collector/main_app/static/images/rockcollector.png)
+![App Screenshot](/main_app/static/images/rockcollector.png)
 <br>
 
 <h3>Technologies Used:</h3>
