@@ -51,6 +51,7 @@ h1 {
   flex-direction: column;
   width: 100%;
   margin: 14px 0 0px;
+  color: whitesmoke;
 }
 
 .login label {
