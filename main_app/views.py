@@ -44,7 +44,7 @@ def add_feeding(request, rock_id):
 
 class RockCreate(LoginRequiredMixin, CreateView):
   model = Rock
-  fields = '__all__'
+  fields = ['name', 'type', 'color']
   success_url = '/rocks/'
 
   def form_valid(self, form):
