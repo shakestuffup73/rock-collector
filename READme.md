@@ -9,7 +9,7 @@ Rock Collector is a playful application where users can create rocks and take ca
 <br>
 LINK TO APP HERE:
 <br>
-<a href="https://web-production-3d7b.up.railway.app/">Rock Collector</a>
+<a href="https://rock-collector.herokuapp.com/about/">Rock Collector</a>
 <br>
 <br>
 
